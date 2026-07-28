@@ -1,0 +1,10 @@
+{
+  "name": "Example: PDF Viewer",
+  "description": "An example plugin demonstrating how to build a PDF viewer with React and the Pixcall SDK.",
+  "viewer_title": "PDF Preview",
+  "viewer.fallback_title": "PDF document",
+  "viewer.waiting_context": "Waiting for current file context information...",
+  "viewer.missing_pdf_url": "No PDF file URL was provided.",
+  "viewer.failed_to_load": "Failed to load PDF file.",
+  "viewer.loading_pdf": "Loading PDF..."
+}

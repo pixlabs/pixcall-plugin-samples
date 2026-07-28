@@ -1,0 +1,78 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.viewer {
+  --viewer-bg: #f4f6f8;
+  --viewer-text: #17202a;
+  --viewer-muted: #53616f;
+  --viewer-toolbar-bg: #ffffff;
+  --viewer-toolbar-border: #d7dee5;
+  --viewer-page-shadow: 0 2px 12px rgba(23, 32, 42, 0.12);
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  background: var(--viewer-bg);
+  color: var(--viewer-text);
+}
+
+.viewer[data-color-mode="dark"] {
+  --viewer-bg: #11161c;
+  --viewer-text: #eef3f8;
+  --viewer-muted: #9eb0c2;
+  --viewer-toolbar-bg: #171717;
+  --viewer-toolbar-border: #283341;
+  --viewer-page-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--viewer-toolbar-border);
+  background: var(--viewer-toolbar-bg);
+}
+
+.title {
+  display: block;
+  max-width: min(80vw, 960px);
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document {
+  min-width: 0;
+  overflow: auto;
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  padding: 16px;
+}
+
+.pages {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.pages .react-pdf__Page {
+  box-shadow: var(--viewer-page-shadow);
+}
+
+.state {
+  padding: 24px;
+  color: var(--viewer-muted);
+}

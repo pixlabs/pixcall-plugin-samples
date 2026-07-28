@@ -1,0 +1,21 @@
+{
+  "id": "pdf-viewer-sample",
+  "name": "%name%",
+  "description": "%description%",
+  "version": "0.1.0",
+  "author": "Pixcall",
+  "icon": "icons/icon.png",
+  "l10n": "./l10n",
+  "default_locale": "en",
+  "categories": ["viewer"],
+  "contributes": {
+    "viewers": [
+      {
+        "title": "%viewer_title%",
+        "entry": "http://127.0.0.1:5173/",
+        "file_types": ["application/pdf"],
+        "extensions": ["pdf"]
+      }
+    ]
+  }
+}

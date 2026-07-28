@@ -1,0 +1,10 @@
+{
+  "name": "示例：PDF 檢視器",
+  "description": "一個示例插件，示範如何使用 React 和 Pixcall SDK 建構 PDF 檢視器。",
+  "viewer_title": "PDF 預覽",
+  "viewer.fallback_title": "PDF 文件",
+  "viewer.waiting_context": "正在等待目前檔案內容資訊...",
+  "viewer.missing_pdf_url": "沒有提供 PDF 檔案位址",
+  "viewer.failed_to_load": "載入 PDF 檔案失敗",
+  "viewer.loading_pdf": "正在載入 PDF..."
+}
