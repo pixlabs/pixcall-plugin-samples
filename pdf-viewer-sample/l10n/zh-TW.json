@@ -1,5 +1,5 @@
 {
-  "name": "示例：PDF 檢視器",
+  "name": "範例：PDF 檢視器",
   "description": "一個示例插件，示範如何使用 React 和 Pixcall SDK 建構 PDF 檢視器。",
   "viewer_title": "PDF 預覽",
   "viewer.fallback_title": "PDF 文件",

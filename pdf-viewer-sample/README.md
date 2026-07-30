@@ -20,21 +20,13 @@ While the server is running, open the entire `pdf-viewer-sample` directory as a
 local plugin in Pixcall. Pixcall will use the development manifest and load the
 plugin from the local HTTP server.
 
-## Build and package
-
-Build the plugin:
+## Build
 
 ```sh
 npm run build
 ```
 
-Create a distributable zip archive:
-
-```sh
-npm run package
-```
-
-The archive is created in this directory as `pdf-viewer-sample-v{version}.zip`.
+The production output is written to `dist/`.
 
 ## License
 

@@ -8,6 +8,8 @@ const messagesByLocale: Record<string, Messages> = {
   en,
   'zh-CN': zhCN,
   'zh-TW': zhTW,
+  zh: zhCN,
+  'zh-HK': zhTW,
 }
 
 export function resolveMessages(locale?: string): Messages {

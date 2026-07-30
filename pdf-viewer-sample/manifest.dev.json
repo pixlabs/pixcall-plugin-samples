@@ -4,10 +4,10 @@
   "description": "%description%",
   "version": "0.1.0",
   "author": "Pixcall",
+  "homepage": "https://pixcall.com",
   "icon": "icons/icon.png",
-  "l10n": "./l10n",
-  "default_locale": "en",
   "categories": ["viewer"],
+  "minimum_core_version": "0.9.6",
   "contributes": {
     "viewers": [
       {
@@ -17,5 +17,7 @@
         "extensions": ["pdf"]
       }
     ]
-  }
+  },
+  "l10n": "./l10n",
+  "default_locale": "en"
 }
