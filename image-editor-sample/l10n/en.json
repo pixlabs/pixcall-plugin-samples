@@ -1,0 +1,17 @@
+{
+  "name": "Example: Image Editor",
+  "description": "An example plugin demonstrating image cropping in an independent Pixcall window.",
+  "command.image_editor": "Image Editor",
+  "editor.loading": "Loading…",
+  "editor.no_image": "Select one image to edit.",
+  "editor.load_failed": "Failed to load the selected image.",
+  "editor.save": "Save",
+  "editor.saving": "Saving…",
+  "editor.saved": "Saved",
+  "editor.save_failed": "Failed to save the cropped image.",
+  "editor.confirm_title": "Overwrite original file?",
+  "editor.confirm_message": "The cropped image will replace the original file. This action cannot be undone.",
+  "editor.confirm": "Overwrite",
+  "editor.cancel": "Cancel",
+  "editor.close": "Close"
+}

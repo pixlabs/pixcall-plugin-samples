@@ -1,0 +1,43 @@
+{
+  "id": "image-editor-sample",
+  "name": "%name%",
+  "description": "%description%",
+  "version": "0.1.0",
+  "author": "Pixcall",
+  "homepage": "https://pixcall.com",
+  "icon": "icons/icon.png",
+  "minimum_core_version": "0.9.6",
+  "contributes": {
+    "commands": [
+      {
+        "command": "image-editor",
+        "title": "%command.image_editor%",
+        "kind": "window",
+        "entry": "index.html",
+        "icon": {
+          "light": "icons/context-menu.png",
+          "dark": "icons/context-menu.png"
+        },
+        "window": {
+          "width": 1024,
+          "height": 720,
+          "min_width": 720,
+          "min_height": 520,
+          "resizable": true,
+          "movable": true,
+          "modal": false
+        },
+        "file_types": ["image/*"]
+      }
+    ],
+    "context_menus": [
+      {
+        "command": "image-editor",
+        "location": "entry_list",
+        "when": "has_selection"
+      }
+    ]
+  },
+  "l10n": "./l10n",
+  "default_locale": "en"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "範例：圖片編輯",
+  "description": "在 Pixcall 獨立視窗中示範圖片裁剪的範例插件。",
+  "command.image_editor": "圖片編輯",
+  "editor.loading": "正在載入…",
+  "editor.no_image": "請選擇一張圖片進行編輯。",
+  "editor.load_failed": "無法載入所選圖片。",
+  "editor.save": "儲存",
+  "editor.saving": "正在儲存…",
+  "editor.saved": "已儲存",
+  "editor.save_failed": "裁剪後的圖片儲存失敗。",
+  "editor.confirm_title": "覆蓋原檔案？",
+  "editor.confirm_message": "裁剪後的圖片將取代原檔案，此操作無法復原。",
+  "editor.confirm": "覆蓋",
+  "editor.cancel": "取消",
+  "editor.close": "關閉"
+}
