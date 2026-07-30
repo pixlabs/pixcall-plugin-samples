@@ -1,0 +1,20 @@
+{
+  "name": "示例：EXIF 信息检查器",
+  "description": "一个使用 React、Vite、exifr 和 Pixcall SDK 检查图像 EXIF 信息的插件示例。",
+  "inspector_title": "EXIF 信息",
+  "exif.loading": "加载中…",
+  "exif.no_original": "没有可用的原始图像文件。",
+  "exif.no_exif": "图片中没有 EXIF 信息。",
+  "exif.parse_failed": "读取 EXIF 信息失败。",
+  "exif.make": "品牌",
+  "exif.model": "型号",
+  "exif.lens": "镜头",
+  "exif.date_taken": "拍摄时间",
+  "exif.exposure_time": "曝光时间",
+  "exif.aperture": "光圈",
+  "exif.iso": "ISO",
+  "exif.focal_length": "焦距",
+  "exif.focal_length_35mm": "35mm 等效焦距",
+  "exif.orientation": "方向",
+  "exif.dimensions": "尺寸"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Example: EXIF Inspector",
+  "description": "An example plugin demonstrating how to inspect EXIF metadata with React, Vite, exifr, and the Pixcall SDK.",
+  "inspector_title": "EXIF",
+  "exif.loading": "Loading…",
+  "exif.no_original": "No original image file is available.",
+  "exif.no_exif": "No EXIF information found in this image.",
+  "exif.parse_failed": "Failed to read EXIF information.",
+  "exif.make": "Make",
+  "exif.model": "Model",
+  "exif.lens": "Lens",
+  "exif.date_taken": "Date Taken",
+  "exif.exposure_time": "Exposure Time",
+  "exif.aperture": "Aperture",
+  "exif.iso": "ISO",
+  "exif.focal_length": "Focal Length",
+  "exif.focal_length_35mm": "35mm Focal Length",
+  "exif.orientation": "Orientation",
+  "exif.dimensions": "Dimensions"
+}

@@ -1,0 +1,41 @@
+{
+  "id": "exif-inspector-sample",
+  "name": "%name%",
+  "description": "%description%",
+  "version": "0.1.0",
+  "author": "Pixcall",
+  "homepage": "https://pixcall.com",
+  "icon": "icons/icon.png",
+  "categories": ["inspector"],
+  "minimum_core_version": "0.9.6",
+  "contributes": {
+    "inspectors": [
+      {
+        "title": "%inspector_title%",
+        "entry": "index.html",
+        "file_types": [
+          "image/avif",
+          "image/bmp",
+          "image/exr",
+          "image/gif",
+          "image/heic",
+          "image/heif",
+          "image/jpeg",
+          "image/jxl",
+          "image/png",
+          "image/psd",
+          "image/tiff",
+          "image/vnd.adobe.photoshop",
+          "image/vnd.radiance",
+          "image/webp",
+          "image/x-dcraw",
+          "image/x-exr",
+          "image/x-tga",
+          "image/x-tiff"
+        ]
+      }
+    ]
+  },
+  "l10n": "./l10n",
+  "default_locale": "en"
+}
