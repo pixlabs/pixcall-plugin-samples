@@ -12,9 +12,9 @@ and plugin directory structure.
 
 ## Samples
 
-- [`pdf-viewer-sample`](./pdf-viewer-sample/) — PDF viewer plugin.
 - [`exif-inspector-sample`](./exif-inspector-sample/) — EXIF metadata inspector.
 - [`image-editor-sample`](./image-editor-sample/) — image cropping editor.
+- [`pdf-viewer-sample`](./pdf-viewer-sample/) — PDF viewer plugin.
 
 ## Contact
 

@@ -238,7 +238,7 @@ for the matching `@2x` asset on high-density displays. The top-level
 | `icon` | object | No | Theme-specific command and context-menu icon paths. Reference the 16×16 base asset; Pixcall automatically uses the matching `@2x` asset on high-density displays. |
 | `file_types` | string[] | No | MIME types associated with the command. |
 | `extensions` | string[] | No | File extensions associated with the command. |
-| `kind` | `"window"` or `"background"` | No | Command execution type. |
+| `kind` | `"window"` | No | Window command execution type. |
 | `entry` | string | No | Page URL or path for a window command. |
 | `window` | object | No | Window configuration for a window command. |
 
@@ -246,23 +246,49 @@ When `window` is provided, `width` and `height` are required. The optional
 fields are `min_width`, `min_height`, `max_width`, `max_height`, `resizable`,
 `movable`, and `modal`.
 
+`window` fields use pixels for dimensions. A value of `0` for a minimum or
+maximum dimension means no limit:
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `width` | number | Yes | Initial window width in pixels. |
+| `height` | number | Yes | Initial window height in pixels. |
+| `min_width` | number | No | Minimum window width in pixels. `0` means no limit. |
+| `min_height` | number | No | Minimum window height in pixels. `0` means no limit. |
+| `max_width` | number | No | Maximum window width in pixels. `0` means no limit. |
+| `max_height` | number | No | Maximum window height in pixels. `0` means no limit. |
+| `resizable` | boolean | No | Whether the user can resize the window. |
+| `movable` | boolean | No | Whether the user can move the window. |
+| `modal` | boolean | No | Whether the window is modal. |
+
 ### Menus and keybindings
 
-`app_menus` and `context_menus` connect commands to menus:
+Declare the file types and extensions on the command contribution:
+
+```json
+{
+  "command": "pdf-viewer.open",
+  "title": "%open_command%",
+  "file_types": ["application/pdf"],
+  "extensions": ["pdf"]
+}
+```
+
+`app_menus` and `context_menus` connect the command to menus:
 
 ```json
 {
   "command": "pdf-viewer.open",
   "location": "file",
-  "when": "has_pdf",
   "submenu": [
-    { "command": "pdf-viewer.open", "when": "has_pdf" }
+    { "command": "pdf-viewer.open" }
   ]
 }
 ```
 
-`command` is required. `location`, `when`, and `submenu` are optional. Each
-submenu item requires `command` and may contain `when`.
+`command` is required. `location`, `when`, and `submenu` are optional. File type
+matching is declared on the corresponding command with `file_types` and
+`extensions`. Each submenu item requires `command` and may contain `when`.
 
 `keybindings` connect commands to keyboard shortcuts:
 
@@ -271,12 +297,12 @@ submenu item requires `command` and may contain `when`.
   "command": "pdf-viewer.open",
   "key": "ctrl+alt+p",
   "macos": "cmd+alt+p",
-  "windows": "ctrl+alt+p",
-  "when": "has_pdf"
+  "windows": "ctrl+alt+p"
 }
 ```
 
 `command` and `key` are required. `macos`, `windows`, and `when` are optional.
+File type matching is inherited from the corresponding command definition.
 
 ### Importer and page
 
