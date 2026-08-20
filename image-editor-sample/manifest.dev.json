@@ -6,14 +6,14 @@
   "author": "Pixcall",
   "homepage": "https://pixcall.com",
   "icon": "icons/icon.png",
-  "minimum_core_version": "0.9.6",
+  "minimum_core_version": "0.9.7",
   "contributes": {
     "commands": [
       {
         "command": "image-editor",
         "title": "%command.image_editor%",
         "kind": "window",
-        "entry": "http://127.0.0.1:5174/",
+        "entry": "http://127.0.0.1:5173/",
         "icon": {
           "light": "icons/context-menu.png",
           "dark": "icons/context-menu.png"

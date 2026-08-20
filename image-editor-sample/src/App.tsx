@@ -73,7 +73,7 @@ function Editor({
       const content = new Uint8Array(await blob.arrayBuffer())
       await pixcall.entries.updateContent(context.entry.id, content)
       setMessage(messages['editor.saved'])
-    } catch {
+    } catch (_error) {
       setMessage(messages['editor.save_failed'])
     } finally {
       setSaving(false)
@@ -88,7 +88,7 @@ function Editor({
 
       <section className="workspace">
         <ReactCrop crop={crop} onChange={(_, percentCrop) => setCrop(percentCrop)}>
-          <img ref={imageRef} src={context.imageUrl} alt={context.entry.name} />
+          <img ref={imageRef} src={context.imageUrl} alt={context.entry.name} crossOrigin="anonymous" />
         </ReactCrop>
       </section>
 

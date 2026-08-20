@@ -7,7 +7,7 @@
   "homepage": "https://pixcall.com",
   "icon": "icons/icon.png",
   "categories": ["inspector"],
-  "minimum_core_version": "0.9.6",
+  "minimum_core_version": "0.9.7",
   "contributes": {
     "inspectors": [
       {
