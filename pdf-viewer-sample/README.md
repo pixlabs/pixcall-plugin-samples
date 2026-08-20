@@ -2,23 +2,21 @@
 
 A sample Pixcall viewer plugin built with React, Vite, and the Pixcall SDK.
 
-## Installation
+## Development
+
+Install dependencies and start the development server:
 
 ```sh
 npm install
-```
-
-## Development
-
-Start the development server:
-
-```sh
 npm run dev
 ```
 
 While the server is running, open the entire `pdf-viewer-sample` directory as a
 local plugin in Pixcall. Pixcall will use the development manifest and load the
 plugin from the local HTTP server.
+
+To try the plugin, open or select a PDF file in Pixcall. The viewer contribution
+should be available for PDF files and display the document in the sample viewer.
 
 ## Build
 
@@ -27,6 +25,9 @@ npm run build
 ```
 
 The production output is written to `dist/`.
+
+Use Pixcall's local or packaged-plugin installation flow to load the generated
+`dist/` directory. The packaged output uses `manifest.json` and `index.html`.
 
 ## License
 

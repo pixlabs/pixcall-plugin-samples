@@ -23,7 +23,7 @@ difference is the entry URL used by a contribution.
   "homepage": "https://pixcall.com/",
   "icon": "icons/icon.png",
   "categories": ["viewer"],
-  "minimum_core_version": "0.9.6",
+  "minimum_core_version": "0.9.7",
   "platform_arch": ["macos-arm64", "windows-x64"],
   "permissions": {},
   "contributes": {},
@@ -61,7 +61,6 @@ Supported platform and architecture identifiers use the format
 macos-arm64
 macos-x64
 windows-x64
-linux-x64
 ```
 
 ## Localization
@@ -211,7 +210,9 @@ Commands can be triggered by menus or keyboard shortcuts:
     "height": 600,
     "resizable": true,
     "movable": true,
-    "modal": false
+    "modal": false,
+    "fullscreen": false,
+    "fullscreenable": true
   }
 }
 ```
@@ -244,7 +245,7 @@ for the matching `@2x` asset on high-density displays. The top-level
 
 When `window` is provided, `width` and `height` are required. The optional
 fields are `min_width`, `min_height`, `max_width`, `max_height`, `resizable`,
-`movable`, and `modal`.
+`movable`, `modal`, `fullscreen`, and `fullscreenable`.
 
 `window` fields use pixels for dimensions. A value of `0` for a minimum or
 maximum dimension means no limit:
@@ -260,6 +261,15 @@ maximum dimension means no limit:
 | `resizable` | boolean | No | Whether the user can resize the window. |
 | `movable` | boolean | No | Whether the user can move the window. |
 | `modal` | boolean | No | Whether the window is modal. |
+| `fullscreen` | boolean | No | Whether the window opens in native full-screen mode. Defaults to `false`. |
+| `fullscreenable` | boolean | No | Whether the window can enter or exit native full-screen mode. Defaults to `false`. |
+
+`fullscreen` and `fullscreenable` control the native window, rather than the
+HTML Fullscreen API. If `fullscreen` is `true`, Pixcall automatically enables
+full-screen capability so the user can exit or re-enter full-screen mode;
+`fullscreenable: true` alone keeps the initial windowed mode while allowing
+full-screen mode later. Pressing `Esc` exits native full-screen mode. These
+fields apply to both window commands and importer contributions.
 
 ### Menus and keybindings
 
@@ -295,14 +305,52 @@ matching is declared on the corresponding command with `file_types` and
 ```json
 {
   "command": "pdf-viewer.open",
-  "key": "ctrl+alt+p",
-  "macos": "cmd+alt+p",
-  "windows": "ctrl+alt+p"
+  "key": "Control+Alt+P"
 }
 ```
 
-`command` and `key` are required. `macos`, `windows`, and `when` are optional.
-File type matching is inherited from the corresponding command definition.
+`command` and `key` are required. `key` must be a string.
+
+Do not use space-separated alternatives, platform-specific `macos`/`windows`
+fields, or a separate `scope` field. `Mod` is resolved to the platform's
+Command/Control modifier by the host. File type matching is inherited from the
+corresponding command definition. Keybindings are active in the host area where
+the plugin is rendered, and the plugin should register the referenced commands
+with `pixcall.commands`.
+
+The optional `when` field adds a host condition for the keybinding; it does not
+define a separate keybinding scope.
+
+Use these canonical TanStack hotkey names in plugin manifests:
+
+| Canonical name | Meaning |
+| --- | --- |
+| `Escape` | Escape |
+| `Enter` | Enter/Return |
+| `Backspace` | Backspace |
+| `Delete` | Delete |
+| `Insert` | Insert |
+| `Space` | Space |
+| `Tab` | Tab |
+| `CapsLock` | Caps Lock |
+| `ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight` | Arrow keys |
+| `Home`, `End`, `PageUp`, `PageDown` | Navigation keys |
+| `Control`, `Alt`, `Shift`, `Meta`, `Mod` | Modifiers |
+| `F1`–`F24` | Function keys |
+| `Mouse3`, `Mouse4` | Mouse Back, Mouse Forward |
+
+Letters, numbers, and punctuation use their normal key names. Combine keys with
+`+`, for example `Control+Alt+P`. For example:
+
+```json
+{
+  "command": "example.open",
+  "key": "Mod+Enter"
+}
+```
+
+The persisted and manifest values use these canonical names. Display labels are
+localized by Pixcall; Electron menu accelerators are generated separately.
 
 ### Importer and page
 

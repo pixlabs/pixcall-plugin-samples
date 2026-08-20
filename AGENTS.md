@@ -40,7 +40,7 @@ npm package.
 
 ## Environment and tooling
 
-- Use a current Node.js LTS release and npm for local development.
+- Use Node.js 22.12 or later and npm for local development.
 - The current sample uses React, TypeScript, and Vite. Follow the existing
   scripts and configuration before introducing new tooling.
 - Keep browser-facing code compatible with the Pixcall plugin runtime. Avoid
@@ -55,6 +55,10 @@ npm install       # Install dependencies
 npm run dev       # Start the local development server
 npm run build     # Check types and build the production output into dist/
 ```
+
+All samples use `127.0.0.1:5173` for the development server. Run only one
+sample's development server at a time unless you intentionally change the
+sample's port configuration and its development manifest together.
 
 ## Manifest and release rules
 
@@ -73,6 +77,23 @@ npm run build     # Check types and build the production output into dist/
 - Build output should contain the plugin files, manifest, icons, localization
   files, license files, and third-party notices required by the plugin. Do not
   include source-only or development files unless the runtime requires them.
+
+## Contribution reference
+
+Start from the contribution type that matches the plugin behavior:
+
+| Need | Manifest contribution | Reference sample |
+| --- | --- | --- |
+| Replace or add a file viewer | `contributes.viewers` | `pdf-viewer-sample` |
+| Show metadata for a selected file | `contributes.inspectors` | `exif-inspector-sample` |
+| Add an action for selected files | `contributes.commands` and, when needed, `context_menus` | `image-editor-sample` |
+| Open selected files in a fullscreen window | `contributes.commands`, `context_menus`, and optionally `keybindings` | `slideshow-sample` |
+
+Use the narrowest file types and extensions that the feature actually handles.
+For multi-selection commands, read `context.invocation.selection.entryIds` before
+loading entries and preserve the user's selection order when rendering. Request
+only the permissions required by the implementation. Add localization keys to
+every locale file when manifest or UI text is user-facing.
 
 ## Change rules
 
@@ -100,12 +121,20 @@ npm run build     # Check types and build the production output into dist/
 
 ## Agent guidelines
 
-- Inspect the relevant sample and its manifest before changing code or
-  configuration.
+- Check `git status` before starting and preserve unrelated user changes.
+- Work only in the sample or documentation area relevant to the request.
+- Before changing code or configuration, inspect the relevant sample's
+  `package.json`, manifests, `src/`, and `vite.config.mjs`.
 - Prefer existing scripts, project conventions, and focused changes over
-  introducing new abstractions.
-- When changing a sample, verify the affected build or package workflow and
-  review the final diff for unrelated changes.
+  introducing new abstractions or rewriting unrelated files.
+- For user-facing documentation, follow the repository's existing English
+  style and avoid guessing Pixcall UI labels or workflows.
+- Distinguish diagnosis from implementation: do not change code when the user
+  only asks for an explanation or review.
+- Before completing a change, run the affected sample's build, run
+  `git diff --check`, and review the final diff for unrelated changes.
+- Do not commit, push, or publish changes unless the user explicitly requests
+  it.
 
 ## License and third-party notices
 
@@ -123,3 +152,6 @@ Before completing a code or configuration change:
 1. Run the relevant sample's build command.
 2. Run `git diff --check`.
 3. Review the final diff and avoid unrelated changes.
+4. For runtime changes, start `npm run dev`, load the sample directory as a
+   local plugin in Pixcall, and test the contribution with a matching file or
+   selection. Keep the server running while testing.
