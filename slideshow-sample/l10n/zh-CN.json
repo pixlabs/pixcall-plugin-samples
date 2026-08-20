@@ -1,0 +1,8 @@
+{
+  "name": "示例：幻灯片",
+  "description": "一个演示如何在 Pixcall 中以全屏幻灯片查看所选文件的示例插件。",
+  "command.open": "以幻灯片查看",
+  "command.previous": "上一项",
+  "command.next": "下一项",
+  "command.close": "关闭幻灯片"
+}

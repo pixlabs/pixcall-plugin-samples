@@ -1,0 +1,68 @@
+{
+  "id": "slideshow-sample",
+  "name": "%name%",
+  "description": "%description%",
+  "version": "0.1.0",
+  "author": "Pixcall",
+  "homepage": "https://pixcall.com",
+  "icon": "icons/icon.png",
+  "minimum_core_version": "0.9.7",
+  "contributes": {
+    "commands": [
+      {
+        "command": "slideshow.open",
+        "title": "%command.open%",
+        "kind": "window",
+        "entry": "http://127.0.0.1:5173/",
+        "icon": {
+          "light": "icons/context-menu.png",
+          "dark": "icons/context-menu.png"
+        },
+        "window": {
+          "width": 1280,
+          "height": 800,
+          "fullscreen": true,
+          "fullscreenable": true,
+          "resizable": false,
+          "movable": false,
+          "modal": false
+        }
+      },
+      {
+        "command": "slideshow.previous",
+        "title": "%command.previous%"
+      },
+      {
+        "command": "slideshow.next",
+        "title": "%command.next%"
+      },
+      {
+        "command": "slideshow.close",
+        "title": "%command.close%"
+      }
+    ],
+    "context_menus": [
+      {
+        "command": "slideshow.open",
+        "location": "entry_list",
+        "when": "has_selection"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "slideshow.previous",
+        "key": "ArrowLeft"
+      },
+      {
+        "command": "slideshow.next",
+        "key": "ArrowRight"
+      },
+      {
+        "command": "slideshow.close",
+        "key": "Escape"
+      }
+    ]
+  },
+  "l10n": "./l10n",
+  "default_locale": "en"
+}
