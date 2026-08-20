@@ -1,5 +1,9 @@
 # Dependencies
 **/node_modules/
+**/.npm/
+**/.yarn/install-state.gz
+**/.yarn/build-state.yml
+**/.pnp.*
 .pnp
 .pnp.js
 
@@ -8,6 +12,7 @@
 **/build/
 **/*.tsbuildinfo
 **/*.zip
+**/*.tgz
 
 # Local environment files
 **/.env
