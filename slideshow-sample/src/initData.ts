@@ -13,21 +13,16 @@ export interface SlideshowItem {
 }
 
 export async function loadSlideshowItems(context: PluginContext | null): Promise<SlideshowItem[]> {
-  const entryIds = context?.invocation?.selection?.entryIds ?? []
-  if (entryIds.length === 0) {
+  const entries = context?.invocation?.selection?.entryIds
+    ? await pixcall.entries.getByIds<Entry>(context.invocation.selection.entryIds)
+    : await getSelectedEntries()
+  if (entries.length === 0) {
     return []
   }
 
-  const entries = await pixcall.entries.getByIds<Entry>(entryIds)
-  const entriesById = new Map(entries.map((entry) => [entry.id, entry]))
   const fileServer = context?.library.fileServer?.replace(TRAILING_SLASHES, '')
 
-  return entryIds.flatMap((entryId) => {
-    const entry = entriesById.get(entryId)
-    if (!entry) {
-      return []
-    }
-
+  return entries.flatMap((entry) => {
     const isImage = entry.mediaType === 'image' || entry.contentType.startsWith('image/')
     const path = isImage
       ? `masters/${encodeURIComponent(entry.id)}`
@@ -45,4 +40,15 @@ export async function loadSlideshowItems(context: PluginContext | null): Promise
       },
     ]
   })
+}
+
+async function getSelectedEntries(): Promise<Entry[]> {
+  const entries: Entry[] = []
+  let cursor: string | undefined
+  do {
+    const page = await pixcall.entries.getSelected<Entry>({ cursor })
+    entries.push(...page.entries)
+    cursor = page.nextCursor ?? undefined
+  } while (cursor)
+  return entries
 }

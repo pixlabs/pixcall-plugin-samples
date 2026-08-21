@@ -23,15 +23,16 @@ export function useEditorContext(): EditorState {
 
     async function load() {
       const context = await pixcall.getContext<PluginContext>()
-      const entryId = context?.invocation?.selection?.entryIds[0]
+      const [entry] = context?.invocation?.selection?.entryIds
+        ? await pixcall.entries.getByIds<Entry>([context.invocation.selection.entryIds[0]])
+        : (await pixcall.entries.getSelected<Entry>()).entries
       const fileServer = context?.library.fileServer
 
-      if (!entryId || !fileServer) {
+      if (!entry || !fileServer) {
         setState({ status: 'empty' })
         return
       }
 
-      const [entry] = await pixcall.entries.getByIds<Entry>([entryId])
       if (!entry || !entry.contentType.startsWith('image/')) {
         setState({ status: 'empty' })
         return

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "pdfjs-dist": "5.4.296",
-    "pixcall": "0.1.4",
+    "pixcall": "0.1.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-pdf": "10.4.1"

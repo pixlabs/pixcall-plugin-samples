@@ -9,7 +9,7 @@
     "build": "tsc --noEmit --skipLibCheck && vite build --mode production"
   },
   "dependencies": {
-    "pixcall": "0.1.4",
+    "pixcall": "0.1.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-image-crop": "11.1.2"
